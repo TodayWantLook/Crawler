@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "@types/puppeteer": "^7.0.4",
+    "axios": "^1.6.7",
+    "cheerio": "^1.0.0-rc.12",
+    "dotenv": "^16.4.5",
+    "mongodb": "^6.4.0",
+    "puppeteer": "^22.4.0"
+  },
+  "devDependencies": {
+    "@types/dotenv": "^8.2.0"
+  }
+}
