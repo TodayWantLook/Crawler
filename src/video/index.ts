@@ -6,7 +6,7 @@ config();
 
 const type = 'video';
 
-interface ApiData {
+interface VideoData {
   videoId: number;
   type: 'video';
   title: string;
@@ -99,7 +99,7 @@ const genres: { id: number; name: string }[] = [
 
 async function getTMDBData(page: number) {
   const db = (await connectDB).db('LikeOTT');
-  const movieList: ApiData[] = [];
+  const movieList: VideoData[] = [];
 
   await axios
     .get(
@@ -114,7 +114,7 @@ async function getTMDBData(page: number) {
     .then((res) => {
       if (res.status == 200) {
         for (let data of res.data.results) {
-          const apiData: ApiData = {
+          const apiData: VideoData = {
             videoId: 0,
             type: type,
             title: '',

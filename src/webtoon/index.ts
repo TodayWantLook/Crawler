@@ -33,6 +33,7 @@ interface WebToonData {
   author: string;
   url: { [key: string]: string };
   img: string;
+  backdrop_img?: string;
   service: string[];
   updateDays: string[];
   rate: number;
@@ -53,7 +54,7 @@ async function Crawl(
   const content = await page.content();
   const $ = cheerio.load(content);
 
-  let data: { genre: string[]; summary: string };
+  let data: { genre: string[]; summary: string; backdrop_img?: string };
 
   if (service === 'naver') {
     data = {
@@ -78,6 +79,9 @@ async function Crawl(
       )
         .find('p')
         .text(),
+      backdrop_img: $('#root > main > div > div > picture')
+        .find('img')
+        .attr('src'),
     };
   }
 
@@ -236,3 +240,5 @@ async function CrawWebToonData(
   const page = await browser.newPage();
   await CrawWebToonData(page, 1, 'kakao', 'finished');
 })();
+
+export { CrawWebToonData };
